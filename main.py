@@ -23,7 +23,7 @@ class Application(tornado.web.Application):
         #数据库
         engine = create_engine(DB_CONNECT_STRING,encoding=DB_ENCODING, echo=DB_ECHO)
         self.db = scoped_session(sessionmaker(bind=engine))
-        init_db(engine)
+        init_db(engine)#初始化数据库
         
 def main():
     tornado.options.parse_command_line()
