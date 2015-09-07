@@ -24,7 +24,6 @@ class Application(tornado.web.Application):
         engine = create_engine(DB_CONNECT_STRING,encoding=DB_ENCODING, echo=DB_ECHO)
         self.db = scoped_session(sessionmaker(bind=engine))
         init_db(engine)
-        update_db(engine)
         
 def main():
     tornado.options.parse_command_line()
