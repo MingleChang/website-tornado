@@ -1,0 +1,26 @@
+{%extends 'base.html'%}  
+{%block title%}  
+登录
+{%end%}  
+
+{%block link%}  
+<link rel="stylesheet" type="text/css" href="{{ static_url("CSS/login.css") }}">
+{%end%} 
+
+{%block content%}  
+<div id="body">
+<form action='/login' method='post' class='well'>  
+    {% raw xsrf_form_html() %}
+    <div class='form-group'>  
+        <label>帐号</label>  
+        <input type='text' name='username' class='form-control' placeholder="请输入邮箱地址"/>  
+    </div>  
+    <div class='form-group'>  
+        <label>密码</label>  
+        <input type='password' name='password' class='form-control' placeholder="请输入密码"/>  
+    </div>   
+    <button type='submit' class='btn btn-primary' onclick='return checkpw()'>登录</button>  
+    <a href='/register'>前往注册</a>  
+</form>
+</div>
+{%end%} 

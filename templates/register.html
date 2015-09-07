@@ -1,0 +1,41 @@
+{%extends 'base.html'%}  
+{%block title%}  
+注册
+{%end%}  
+{%block link%}  
+<link rel="stylesheet" type="text/css" href="{{ static_url("CSS/register.css") }}">
+<script type="text/javascript" src="{{ static_url("JS/check.js") }}"></script>
+<script type="text/javascript" src="{{ static_url("JS/register.js") }}"></script>
+{%end%} 
+{%block content%}  
+<div id="body">
+<p id="hint" class='text-danger'></p>  
+<form action='/register' method='post' class='well'>  
+    {% raw xsrf_form_html() %}
+    <div class='form-group'>  
+        <label>帐号</label>  
+        <input value='{{username}}' onBlur='checkUserName()' type='text' name='username' class='form-control' placeholder="请输入邮箱地址"/>  
+        <div id='username'></div>
+    </div>  
+    <div class='form-group'>  
+        <label>密码</label>  
+        <input onBlur='checkPassword()' type='password' name='password' class='form-control' placeholder="请输入密码"/>  
+        <div id='password'></div>
+    </div>  
+    <div class='form-group'>  
+        <label>确认密码</label>  
+        <input onBlur='checkPassword2()' type='password' name='password2' class='form-control' placeholder="请确认密码"/>  
+        <div id='password2'></div>
+    </div>  
+    <button type='submit' class='btn btn-primary' onclick='return checkAll()'>注册</button>  
+    <a href='/login'>已有帐号，请直接登录</a>  
+</form>
+</div>
+<script type="text/javascript">
+    var hint=document.getElementById('username')
+    var name={{username}}
+    if (name.length>0) {
+        hint.innerHTML='该用户已存在'
+    }
+</script>
+{%end%} 
