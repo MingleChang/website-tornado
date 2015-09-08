@@ -12,12 +12,14 @@ class AddJokeAPIHandler(APIHandler):
 		userid=self.get_argument('userid',None)
 		title=self.get_argument('title',None)
 		content=self.get_argument('content',None)
+		tagid=self.get_argument('tagid',None)
 		self.addJoke(userid,title,content)
 		
 	def post(self):
 		userid=self.get_argument('userid',None)
 		title=self.get_argument('title',None)
 		content=self.get_argument('content',None)
+		tagid=self.get_argument('tagid',None)
 		self.addJoke(userid,title,content)
 
 	def addJoke(self,userid,title,content):
