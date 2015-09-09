@@ -8,8 +8,10 @@ from handlers.logout import LogoutHandler
 from handlers.api import APIHandler
 from handlers.loginAPI import LoginAPIHandler
 from handlers.registerAPI import RegisterAPIHandler
-from handlers.addJokeAPI import AddJokeAPIHandler
-from handlers.getJokeAPI import GetJokeAPIHandler
+
+from handlers.jokeInsertAPI import AddJokeAPIHandler
+from handlers.jokeSelectAPI import GetJokeAPIHandler
+
 from handlers.tagInsertAPI import AddTagAPIHandler
 from handlers.tagSelectAPI import GetTagAPIHandler
 
@@ -28,6 +30,6 @@ url_patterns = [
 	(r'/api/addtag', AddTagAPIHandler),
 	(r'/api/gettag', GetTagAPIHandler),
 
-	(r'/api.*', APIHandler),
+	(r'/api/.*', APIHandler),
 	(r'.*',BaseHandler),
 ]

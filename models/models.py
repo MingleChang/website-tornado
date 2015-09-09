@@ -46,7 +46,7 @@ class Joke(Base):
 	content=Column(Text)
 	userid=Column(String(50), ForeignKey('user.userid'))
 	tagid=Column(String(50), ForeignKey('tag.tagid'))
-	user=relationship('User',backref='jokes')
+	user=relationship('User')
 	tag=relationship('Tag')
 	create=Column(DateTime,default=datetime.datetime.utcnow())
 
@@ -64,7 +64,7 @@ class Comment(Base):
 	content=Column(Text)
 	userid=Column(String(50), ForeignKey('user.userid'))
 	jokeid=Column(String(50), ForeignKey('joke.jokeid'))
-	user=relationship('User',backref='comments')
+	user=relationship('User')
 	create=Column(DateTime,default=datetime.datetime.utcnow())
 		
 
