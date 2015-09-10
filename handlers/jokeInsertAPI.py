@@ -37,7 +37,24 @@ class AddJokeAPIHandler(APIHandler):
 			return False
 
 	def addJoke(self,userid,title,content,tagid):
-		if content==None or len(content)==0:
+		if userid=='':
+			self.status=201
+			self.message='userid不能为空'
+			jsonStr=self.getJsonResult()
+			self.write(jsonStr)
+		elif tagid=='':
+			self.status=201
+			self.message='tagid不能为空'
+			jsonStr=self.getJsonResult()
+			self.write(jsonStr)
+		elif not self.checkUser(userid):
+			self.status=201
+			self.message='该userid不存在'
+			jsonStr=self.getJsonResult()
+			self.write(jsonStr)
+		elif not self.checkTag(tagid):
+			self.status=201
+			self.message='该tagid不存在'
 			jsonStr=self.getJsonResult()
 			self.write(jsonStr)
 		else:
@@ -46,15 +63,26 @@ class AddJokeAPIHandler(APIHandler):
 			newjoke.jokeid=jokeid
 			newjoke.userid=userid
 			newjoke.title=title
+			newjoke.tagid=tagid
 			newjoke.content=content
-			columns = [c.key for c in class_mapper(newjoke.__class__).columns]
-			dic = dict((c, self.getAttrModel(newjoke, c)) for c in columns)
-			self.status=200
-			jsonStr=self.getJsonResult(result=dic)
 			
 			self.db.add(newjoke)
 			self.db.commit()
 			self.db.close()
+
+			jokes=self.db.query(Joke.jokeid,Joke.title,Joke.content,User.username,Tag.content).filter(Joke.jokeid==jokeid).filter(Joke.userid==User.userid).filter(Joke.tagid==Tag.tagid).all()
+
+			joke=jokes[0]
+
+			dic={};
+			dic['jokeid']=joke[0]
+			dic['title']=joke[1]
+			dic['content']=joke[2]
+			dic['username']=joke[3]
+			dic['tagcontent']=joke[4]
+
+			self.status=200
+			jsonStr=self.getJsonResult(result=jokes)
 
 			self.write(jsonStr)
 		

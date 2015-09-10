@@ -4,26 +4,29 @@ import tornado.web
 import uuid
 import json
 from sqlalchemy.orm import class_mapper
-from models.models import Joke,User
+from models.models import Joke,User,Tag
 from handlers.api import APIHandler
 
 class GetJokeAPIHandler(APIHandler):
 	def get(self):
-		jokes=self.db.query(Joke.title,User.username).filter(Joke.userid==User.userid).all()
-		self.write(json.dumps(jokes))
-		# jokes=self.db.query(Joke)
-		# array=[]
-		# for joke in jokes:
-		# 	columns = [c.key for c in class_mapper(joke.__class__).columns]
-		# 	dic = dict((c, self.getAttrModel(joke, c)) for c in columns)
-		# 	array.append(dic)
-
-		# self.status=200
-		# jsonStr=self.getJsonResult(result=array,count=len(array))
-		# self.write(jsonStr)
+		self.select()
 
 	def post(self):
-		pass
+		self.select()
 
+	def select(self):
+		jokes=self.db.query(Joke.jokeid,Joke.title,Joke.content,User.username,Tag.content).filter(Joke.userid==User.userid).filter(Joke.tagid==Tag.tagid).all()
+		arr=[]
+		for joke in jokes:
+			dic={};
+			dic['jokeid']=joke[0]
+			dic['title']=joke[1]
+			dic['content']=joke[2]
+			dic['username']=joke[3]
+			dic['tagcontent']=joke[4]
+			arr.append(dic)
+		self.status=200
+		jsonStr=self.getJsonResult(result=arr,count=len(arr))
+
+		self.write(jsonStr)
 	
-		
