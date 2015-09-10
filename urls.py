@@ -15,6 +15,9 @@ from handlers.jokeSelectAPI import GetJokeAPIHandler
 from handlers.tagInsertAPI import AddTagAPIHandler
 from handlers.tagSelectAPI import GetTagAPIHandler
 
+from handlers.commentInsertAPI import AddCommentAPIHandler
+from handlers.commentSelectAPI import GetCommentAPIHandler
+
 url_patterns = [
 	(r'/', IndexHandler),
 	(r'/login', LoginHandler),
@@ -29,6 +32,9 @@ url_patterns = [
 
 	(r'/api/addtag', AddTagAPIHandler),
 	(r'/api/gettag', GetTagAPIHandler),
+
+	(r'/api/addcomment', AddCommentAPIHandler),
+	(r'/api/getcomment', GetCommentAPIHandler),
 
 	(r'/api/.*', APIHandler),
 	(r'.*',BaseHandler),
