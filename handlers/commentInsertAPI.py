@@ -37,7 +37,7 @@ class AddCommentAPIHandler(APIHandler):
 	def insertComment(self,jokeid,userid,content):
 		if jokeid=='':
 			self.status=201
-			self.message=u'jokeid不能为空'
+			self.message='jokeid不能为空'
 			jsonStr=self.getJsonResult()
 
 			self.write(jsonStr)
