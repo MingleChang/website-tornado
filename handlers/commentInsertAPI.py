@@ -12,13 +12,13 @@ class AddCommentAPIHandler(APIHandler):
 		jokeid=self.get_argument('jokeid','')
 		userid=self.get_argument('userid','')
 		content=self.get_argument('content','')
-		self.insertComment()
+		self.insertComment(jokeid,userid,content)
 		
 	def post(self):
 		jokeid=self.get_argument('jokeid','')
 		userid=self.get_argument('userid','')
 		content=self.get_argument('content','')
-		self.insertComment()
+		self.insertComment(jokeid,userid,content)
 
 	def checkJoke(self,jokeid):
 		count=self.db.query(Joke).filter(Joke.jokeid==jokeid).count()
@@ -36,13 +36,29 @@ class AddCommentAPIHandler(APIHandler):
 
 	def insertComment(self,jokeid,userid,content):
 		if jokeid=='':
-			pass
+			self.status=201
+			self.message=u'jokeid不能为空'
+			jsonStr=self.getJsonResult()
+
+			self.write(jsonStr)
 		elif userid=='':
-			pass
+			self.status=201
+			self.message='userid不能为空'
+			jsonStr=self.getJsonResult()
+
+			self.write(jsonStr)
 		elif not self.checkUser(userid):
-			pass
+			self.status=201
+			self.message='该userid不存在'
+			jsonStr=self.getJsonResult()
+
+			self.write(jsonStr)
 		elif not self.checkJoke(jokeid):
-			pass
+			self.status=201
+			self.message='该jokeid不存在'
+			jsonStr=self.getJsonResult()
+
+			self.write(jsonStr)
 		else:
 			commentid=uuid.uuid1().hex;
 			newcomment=Comment()
@@ -51,7 +67,7 @@ class AddCommentAPIHandler(APIHandler):
 			newcomment.jokeid=jokeid
 			newcomment.content=content
 
-			self.db.add(newjoke)
+			self.db.add(newcomment)
 			self.db.commit()
 			self.db.close()
 			
