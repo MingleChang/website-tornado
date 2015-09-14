@@ -1,13 +1,17 @@
 {%extends '../base.html'%}  
 {%block title%}  
-AddTag
+AddJoke
 {%end%}  
 {%block content%} 
-<form acion=''>
-	Content:<br/>
-	<input type='text' name='content'><br>
-	Code:<br/>
-	<input type='text' name='code'><br/>
+<form action="">
+	Title: <input type="text" name="firstname"></br>
+	Category:<select name="cars">
+	{% for tag in tags %}
+		<option value={{tag['tagid']}}>{{tag['content']}}</option>
+	{% end %}
+	</select></br>
+	Content: </br>
+	<textarea rows="10" cols="30"></textarea></br>
 	<input type="submit" value="Submit">
 </form>
 {%end%} 
