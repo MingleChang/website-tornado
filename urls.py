@@ -18,6 +18,9 @@ from handlers.tagSelectAPI import GetTagAPIHandler
 from handlers.commentInsertAPI import AddCommentAPIHandler
 from handlers.commentSelectAPI import GetCommentAPIHandler
 
+from handlers.tagInsertForm import AddTagFormHandler
+from handlers.jokeInsertForm import AddJokeFormHandler
+
 url_patterns = [
 	(r'/', IndexHandler),
 	(r'/login', LoginHandler),
@@ -35,6 +38,9 @@ url_patterns = [
 
 	(r'/api/addcomment', AddCommentAPIHandler),
 	(r'/api/getcomment', GetCommentAPIHandler),
+
+	(r'/admin/addtag', AddTagFormHandler),
+	(r'/admin/addjoke', AddJokeFormHandler),
 
 	(r'/api/.*', APIHandler),
 	(r'.*',BaseHandler),
