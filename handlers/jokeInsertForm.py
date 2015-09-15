@@ -5,17 +5,29 @@ import tornado.web
 import uuid
 import tornado.httpclient
 from sqlalchemy.orm import class_mapper
-from models.models import Tag
+from models.models import Tag,User
 from handlers.base import BaseHandler
 
 class AddJokeFormHandler(BaseHandler):
 	def get(self):
+
 		tagArr=self.selectAllTag()
-		self.render('admin/addjoke.html',tags=tagArr)
+		userArr=self.selectAllUser()
+		self.render('admin/addjoke.html',tags=tagArr,users=userArr)
 
 	def post(self):
-		self.render('admin/addjoke.html')
+		pass
 	
+	def  selectAllUser(self):
+		users=self.db.query(User.userid,User.username)
+		userArr=[]
+		for user in users:
+			dic={}
+			dic['userid']=user.userid
+			dic['username']=user.username
+			userArr.append(dic)
+		return userArr
+
 	def selectAllTag(self):
 		tags=self.db.query(Tag)
 		tagArr=[]
