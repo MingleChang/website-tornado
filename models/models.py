@@ -44,6 +44,7 @@ class Joke(Base):
 	jokeid=Column(String(50), primary_key=True)
 	title=Column(String(200))
 	content=Column(Text)
+	status=Column(Integer)
 	userid=Column(String(50), ForeignKey('user.userid'))
 	tagid=Column(String(50), ForeignKey('tag.tagid'))
 	user=relationship('User')
