@@ -18,55 +18,6 @@ def update_db(engine):
 def drop_db(engine):
 	Base.metadata.drop_all(bind=engine)
 
-class User(Base):
-	__tablename__ = 'user'
-
-	userid = Column(String(50), primary_key=True)
-	username = Column(String(50))
-	password = Column(String(50))
-	image = Column(String(200))
-	realname = Column(String(50))
-	nickname = Column(String(50))
-	email = Column(String(200))
-	telephone = Column(String(20))
-	address = Column(Text)
-	sex = Column(Integer)
-	birthday = Column(Date)
-	blood = Column(Integer)
-	summary = Column(Text)
-
-	create = Column(DateTime,default=datetime.datetime.utcnow())
-	update = Column(DateTime,default=datetime.datetime.utcnow())
-
-class Joke(Base):
-	__tablename__='joke'
-
-	jokeid=Column(String(50), primary_key=True)
-	title=Column(String(200))
-	content=Column(Text)
-	status=Column(Integer)
-	userid=Column(String(50), ForeignKey('user.userid'))
-	tagid=Column(String(50), ForeignKey('tag.tagid'))
-	user=relationship('User')
-	tag=relationship('Tag')
-	create=Column(DateTime,default=datetime.datetime.utcnow())
-
-class Tag(Base):
-	__tablename__='tag'
-
-	tagid=Column(String(50), primary_key=True)
-	content=Column(String(50),unique=True)
-	jokes=relationship('Joke')
-
-class Comment(Base):
-	__tablename__='comment'
-
-	commentid=Column(String(50), primary_key=True)
-	content=Column(Text)
-	userid=Column(String(50), ForeignKey('user.userid'))
-	jokeid=Column(String(50), ForeignKey('joke.jokeid'))
-	user=relationship('User')
-	create=Column(DateTime,default=datetime.datetime.utcnow())
 		
 
 		

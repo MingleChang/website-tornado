@@ -6,6 +6,7 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.options
 import tornado.web
+import datetime
 
 from models.models import init_db,update_db
 
@@ -21,14 +22,18 @@ class Application(tornado.web.Application):
     def __init__(self):
         super(Application, self).__init__(url_patterns, **settings)
         #数据库
-        engine = create_engine(DB_CONNECT_STRING,encoding=DB_ENCODING, echo=DB_ECHO)
-        self.db = scoped_session(sessionmaker(bind=engine))
-        init_db(engine)#初始化数据库
-        
+        # engine = create_engine(DB_CONNECT_STRING,encoding=DB_ENCODING, echo=DB_ECHO)
+        # self.db = scoped_session(sessionmaker(bind=engine))
+        # init_db(engine)#初始化数据库
+
+def test_loop():
+    print datetime.datetime.now()
+  
 def main():
     tornado.options.parse_command_line()
     http_server = tornado.httpserver.HTTPServer(Application())
     http_server.listen(LISTEN_PORT)
+    # tornado.ioloop.PeriodicCallback(test_loop,1000).start()
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == '__main__':
