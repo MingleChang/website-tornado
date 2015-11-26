@@ -13,7 +13,6 @@ import uuid
 import json
 
 from handlers.api import APIHandler
-from tornado.options import define, options
 
 class TestHandler(APIHandler):
 	@tornado.web.asynchronous
