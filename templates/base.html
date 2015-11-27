@@ -17,14 +17,16 @@
         <script src="{{static_url("js/jquery.min.js")}}"></script>
         <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
         <script src="{{static_url("bootstrap/js/bootstrap.min.js")}}"></script>
+
+        <link rel="stylesheet" href="{{static_url("CSS/base-footer.css")}}">
         {%block link%}  
         {%end%}  
     </head>
     <body>
         <header>  
         <!-- Static navbar -->
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
+        <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -53,18 +55,17 @@
             </li>
           </ul>
         </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-        {%block header%}  
-        {%end%}  
+        </div>
+        </nav>
         </header>  
         <content>  
         {%block content%}  
         {%end%}  
         </content>  
-        <footer>  
-        {%block footer%}  
-        {%end%}  
-        </footer>  
+        <footer class="footer">
+        <div class="container">
+        <p class="text-muted">@MingleChang</p>
+        </div>
+        </footer>
     </body>
 </html>
