@@ -9,8 +9,6 @@ import tornado.web
 import datetime
 import mysql.connector
 
-from models.models import init_db,update_db
-
 from settings import settings,DB_USERNAME,DB_PASSWORD,DB_DATEBASE,LISTEN_PORT
 from urls import url_patterns
 
