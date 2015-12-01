@@ -14,6 +14,10 @@ STATIC_PATH = os.path.join(BASH_PATH, "static")
 #数据库设置
 DB_CONNECT_STRING = 'sqlite:///'+BASH_PATH+'/test.db'
 # DB_CONNECT_STRING = 'mysql+mysqlconnector://root:890805@localhost:3306/test'
+DB_HOST = '127.0.0.1:3306'
+DB_DATEBASE = 'minglechang'
+DB_USERNAME = 'root'
+DB_PASSWORD = '890805'
 DB_ECHO = False
 DB_ENCODING = 'utf-8'
 POOL_RECYCLE = 5

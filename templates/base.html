@@ -18,16 +18,17 @@
         <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
         <script src="{{static_url("bootstrap/js/bootstrap.min.js")}}"></script>
 
-        <link rel="stylesheet" href="{{static_url("CSS/base-footer.css")}}">
+        <link rel="stylesheet" href="{{static_url("CSS/base.css")}}">
         {%block link%}  
         {%end%}  
     </head>
     <body> 
         <header>  
         {%block header%}
-        <!-- Static navbar -->
-        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+
         <div class="container">
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default navbar-inverse">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -39,25 +40,12 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/">首页</a></li>
-            <li><a href="/">博客</a></li>
+            <li><a href="/blog">博客</a></li>
             <li><a href="/">关于</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">下拉 <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
           </ul>
         </div><!--/.nav-collapse -->
-        </div>
         </nav>
+        </div>
         {%end%}  
         </header>  
         <content>  
@@ -65,11 +53,11 @@
         {%end%}
         </content>  
         {%block footer%} 
-        <footer class="footer">
         <div class="container">
+        <footer class="footer">
         <p class="text-muted">@MingleChang</p>
-        </div>
         </footer>
+        </div>
         {%end%} 
     </body>
 </html>
