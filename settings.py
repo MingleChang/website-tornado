@@ -12,10 +12,10 @@ TEMPLATES_PATH = os.path.join(BASH_PATH, "templates")
 STATIC_PATH = os.path.join(BASH_PATH, "static")
 
 #数据库设置
-DB_CONNECT_STRING = 'sqlite:///'+BASH_PATH+'/test.db'
+SQLITE_PATH=BASH_PATH+'/test.db'
 # DB_CONNECT_STRING = 'mysql+mysqlconnector://root:890805@localhost:3306/test'
 DB_HOST = '127.0.0.1:3306'
-DB_DATEBASE = 'minglechang'
+DB_DATEBASE = 'test'
 DB_USERNAME = 'root'
 DB_PASSWORD = '890805'
 DB_ECHO = False
