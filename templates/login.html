@@ -10,6 +10,7 @@ MingleChang
 	<form class="form-horizontal" action="login" method="post">
     {% raw xsrf_form_html() %}
   	<div class="form-group">
+    <label class="control-label">{{hint}}</label><br>
     <label class="control-label">帐号</label>
     <input type="text" class="form-control" placeholder="请输入帐号" name="username">
   </div>

@@ -9,7 +9,8 @@ class LoginHandler(BaseHandler):
 		if self.get_current_user():
 			self.redirect('/')
 			return
-		self.render('login.html')
+		hint=self.get_argument('hint','')
+		self.render('login.html',hint=hint)
 
 	def post(self):
 		username=self.get_argument('username','')
@@ -19,7 +20,7 @@ class LoginHandler(BaseHandler):
 			self.set_secure_cookie('username', username)
 			self.redirect('/')
 		else:
-			self.redirect('login')
+			self.redirect('login?hint='+hint)
 
 	def  checkUserNameAndPassword(self,username,password):
 		cursor = self.db.cursor()
