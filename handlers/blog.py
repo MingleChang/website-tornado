@@ -3,10 +3,20 @@
 
 import tornado.web
 from handlers.base import BaseHandler
+import markdown2
 
 class BlogHandler(BaseHandler):
 	def get(self):
-		self.render('blog.html')
+		values=self.selectedAllBlog()
+		self.render('blog.html',values=values)
 
 	def post(self):
-		self.render('blog.html')
+		self.selectedAllBlog()
+		self.render('blog.html',values=values)
+
+	def selectedAllBlog(self):
+		cursor = self.db.cursor()
+		cursor.execute('select id,title,description from blog')
+		values = cursor.fetchall()
+		cursor.close()
+		return values

@@ -4,5 +4,14 @@ MingleChang
 {%end%} 
 {%block content%} 
 <div class="container"> 
+     <div class="list-group">
+     	{% for value in values %}
+          <a href="/blog/{{value[0]}}" class="list-group-item">
+          <h4 class="list-group-item-heading">{{value[1]}}</h4>
+          <p class="list-group-item-text">{{value[2]}}</p>
+        </a>
+         {% end %}
+      </div>
+    </div>
 </div>
 {%end%} 

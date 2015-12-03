@@ -22,7 +22,7 @@ class Application(tornado.web.Application):
         self.db = sqlite3.connect(SQLITE_PATH)
         cursor = self.db.cursor()
         cursor.execute('CREATE TABLE IF NOT EXISTS user (id varchar(100) NOT NULL PRIMARY KEY,name varchar(100),password varchar(100))')
-        cursor.execute('CREATE TABLE IF NOT EXISTS blog (id varchar(100) NOT NULL PRIMARY KEY,userid varchar(100) NOT NULL REFERENCES user (id) ON DELETE CASCADE ON UPDATE CASCADE,title varchar(100),description varchar(100),detail text)')
+        cursor.execute('CREATE TABLE IF NOT EXISTS blog (id varchar(100) NOT NULL PRIMARY KEY,userid varchar(100) NOT NULL REFERENCES user (id) ON DELETE CASCADE ON UPDATE CASCADE,title varchar(100),description varchar(500),detail text)')
         cursor.close()
         self.db.commit()
   
