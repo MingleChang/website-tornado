@@ -7,4 +7,6 @@ CREATE TABLE IF NOT EXISTS blog (
 	userid varchar(100) NOT NULL REFERENCES user (id) ON DELETE CASCADE ON UPDATE CASCADE,
 	title varchar(100),
 	description varchar(100),
-	detail text);
+	detail text,
+	ctime datetime NOT NULL DEFAULT now(),
+	utime datetime NOT NULL DEFAULT now());

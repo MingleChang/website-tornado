@@ -2,27 +2,34 @@
 # -*- coding: utf-8 -*-
 
 import os.path
-
-DEBUG = True
 LISTEN_PORT = 8000
 
 #文件路径
+#项目的根路径
 BASH_PATH = os.path.dirname(__file__)
+#项目模板文件路径
 TEMPLATES_PATH = os.path.join(BASH_PATH, "templates")
+#项目静态文件路径
 STATIC_PATH = os.path.join(BASH_PATH, "static")
 
-#数据库设置
+#Sqlite的初始化sql语句
+SQLITE_SQL_PATH=BASH_PATH+'/sqlite.sql'
+#MySQL的初始化sql语句
+MYSQL_SQL_PATH=BASH_PATH+'/mysql.sql'
+
+#Sqlite数据库文件路径
 SQLITE_PATH=BASH_PATH+'/test.db'
-# DB_CONNECT_STRING = 'mysql+mysqlconnector://root:890805@localhost:3306/test'
-DB_HOST = '127.0.0.1:3306'
-DB_DATEBASE = 'test'
-DB_USERNAME = 'root'
-DB_PASSWORD = '890805'
-DB_ECHO = False
-DB_ENCODING = 'utf-8'
-POOL_RECYCLE = 5
 
+#MySQL数据的连接参数
+mysql_param=dict(
+	host='127.0.0.1',
+	port='3306',
+	user='root',
+	password='890805',
+	database='test'
+)
 
+#项目基本设置
 settings=dict(
 	template_path=TEMPLATES_PATH,
 	static_path=STATIC_PATH,
