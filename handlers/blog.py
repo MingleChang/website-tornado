@@ -3,7 +3,6 @@
 
 import tornado.web
 from handlers.base import BaseHandler
-import markdown2
 
 class BlogHandler(BaseHandler):
 	def get(self):
