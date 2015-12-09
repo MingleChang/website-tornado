@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import os.path
-LISTEN_PORT = 8000
 
 #文件路径
 #项目的根路径

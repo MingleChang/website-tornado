@@ -10,10 +10,12 @@ import datetime
 import mysql.connector
 import sqlite3
 
-from settings import settings,mysql_param,LISTEN_PORT,SQLITE_PATH,SQLITE_SQL_PATH,MYSQL_SQL_PATH
+from settings import settings,mysql_param,SQLITE_PATH,SQLITE_SQL_PATH,MYSQL_SQL_PATH
 from urls import url_patterns
 
 from tornado.options import define, options
+
+define("port", default=8000, help="run on the given port", type=int)
 
 class Application(tornado.web.Application):
     def __init__(self):
@@ -61,7 +63,7 @@ class Application(tornado.web.Application):
 def main():
     tornado.options.parse_command_line()
     http_server = tornado.httpserver.HTTPServer(Application())
-    http_server.listen(LISTEN_PORT)
+    http_server.listen(options.port)
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == '__main__':
