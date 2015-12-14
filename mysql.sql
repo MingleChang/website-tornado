@@ -16,5 +16,5 @@ CREATE TABLE IF NOT EXISTS blog (
 	title varchar(100),
 	description varchar(100),
 	detail text,
-	ctime datetime NOT NULL DEFAULT now(),
-	utime datetime NOT NULL DEFAULT now());
+	ctime datetime NULL DEFAULT CURRENT_TIMESTAMP,
+	utime datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
