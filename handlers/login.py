@@ -17,7 +17,7 @@ class LoginHandler(BaseHandler):
 		password=self.get_argument('password','')
 		hint = self.checkUserNameAndPassword(username,password)
 		if hint=='':
-			self.set_secure_cookie('username', username)
+			self.set_secure_cookie('username', username,expires_days=None)
 			self.redirect('/')
 		else:
 			self.redirect('login?hint='+hint)
