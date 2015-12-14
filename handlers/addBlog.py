@@ -29,6 +29,6 @@ class AddBlogHandler(BaseHandler):
 
 	def insertBlog(self,userid,title,description,detail):
 		cursor = self.db.cursor()
-		cursor.execute('insert into blog (id,userid, title,description,detail) values (%s, %s,%s, %s,%s)',(uuid.uuid1().hex,userid,title,description,detail))
+		cursor.execute('insert into blog (id,userid, title,description,detail,ctime,utime) values (%s, %s,%s, %s,%s,null,null)',(uuid.uuid1().hex,userid,title,description,detail))
 		cursor.close()
 		self.db.commit()
