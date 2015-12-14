@@ -2,6 +2,7 @@ CREATE TABLE IF NOT EXISTS user (
 	id varchar(100) NOT NULL PRIMARY KEY,
 	username varchar(100),
 	password varchar(100),
+	image varchar(500),
 	telephone varchar(100),
 	email varchar(100),
 	nickname varchar(100),
