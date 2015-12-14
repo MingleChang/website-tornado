@@ -22,7 +22,7 @@ class AddBlogHandler(BaseHandler):
 
 	def  selectedUserId(self,username):
 		cursor = self.db.cursor()
-		cursor.execute('select * from user where name=?',(username,))
+		cursor.execute('select * from user where username=%s',(username,))
 		values = cursor.fetchall()
 		cursor.close()
 		return values[0][0]
