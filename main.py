@@ -20,13 +20,13 @@ define("port", default=8000, help="run on the given port", type=int)
 class Application(tornado.web.Application):
     def __init__(self):
         super(Application, self).__init__(url_patterns, **settings)
-        #MySQL数据库初始化
-        # self.db = mysql.connector.connect(**mysql_param)
-        # self.createMySQLTable()
+        #MySQL数据库初始化 PS:使用sqlite时请使用%s作为sql语句占位符
+        self.db = mysql.connector.connect(**mysql_param)
+        self.createMySQLTable()
         
-        #Sqlite数据库初始化
-        self.db = sqlite3.connect(SQLITE_PATH)
-        self.createSqliteTable()
+        #Sqlite数据库初始化 PS:使用sqlite时请使用？作为sql语句占位符
+        # self.db = sqlite3.connect(SQLITE_PATH)
+        # self.createSqliteTable()
 
     def createSqliteTable(self):
         cursor = self.db.cursor()

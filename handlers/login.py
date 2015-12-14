@@ -24,7 +24,7 @@ class LoginHandler(BaseHandler):
 
 	def  checkUserNameAndPassword(self,username,password):
 		cursor = self.db.cursor()
-		cursor.execute('select * from user where name=? and password=?',(username,password))
+		cursor.execute('select * from user where username=%s and password=%s',(username,password))
 		values = cursor.fetchall()
 		cursor.close()
 		if len(values)==0:

@@ -31,7 +31,7 @@ class RegisterHandler(BaseHandler):
 
 	def checkUserExist(self,username):
 		cursor = self.db.cursor()
-		cursor.execute('select * from user where name=?',(username,))
+		cursor.execute('select * from user where username=%s',(username,))
 		values = cursor.fetchall()
 		cursor.close()
 		if len(values)==0:
@@ -41,6 +41,6 @@ class RegisterHandler(BaseHandler):
 
 	def insertUser(self,username,password):
 		cursor = self.db.cursor()
-		cursor.execute('insert into user (id, name,password) values (?, ?, ?)',(uuid.uuid1().hex,username,password))
+		cursor.execute('insert into user (id, username,password) values (%s, %s, %s)',(uuid.uuid1().hex,username,password))
 		cursor.close()
 		self.db.commit()

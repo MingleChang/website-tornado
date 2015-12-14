@@ -19,7 +19,7 @@ class BlogDetailHandler(BaseHandler):
 
 	def selectedBlogById(self,blogid):
 		cursor = self.db.cursor()
-		cursor.execute('select detail from blog where id=?',(blogid,))
+		cursor.execute('select detail from blog where id=%s',(blogid,))
 		values = cursor.fetchall()
 		cursor.close()
 		md=values[0][0]
