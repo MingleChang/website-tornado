@@ -23,8 +23,8 @@ SQLITE_PATH=BASH_PATH+'/test.db'
 mysql_param=dict(
 	host='128.199.173.244',
 	port='3306',
-	user='mingle',
-	password='mingle0805',
+	user='website',
+	password='website890805',
 	database='website'
 )
 
