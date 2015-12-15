@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS user (
 	realname varchar(100),
 	sex integer,
 	birthday date,
-	admin tinyint(1) NOT NULL DEFAULT 0);
+	admin tinyint(1) NOT NULL DEFAULT 0
+)engine=innodb default charset=utf8;
 CREATE TABLE IF NOT EXISTS blog (
 	id varchar(100) NOT NULL PRIMARY KEY,
 	userid varchar(100) NOT NULL REFERENCES user (id) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -17,4 +18,5 @@ CREATE TABLE IF NOT EXISTS blog (
 	description varchar(100),
 	detail text,
 	ctime timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-	utime timestamp NOT NULL DEFAULT now() ON UPDATE now());
+	utime timestamp NOT NULL DEFAULT now() ON UPDATE now()
+)engine=innodb default charset=utf8;

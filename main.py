@@ -22,7 +22,7 @@ class Application(tornado.web.Application):
         super(Application, self).__init__(url_patterns, **settings)
         #MySQL数据库初始化 PS:使用sqlite时请使用%s作为sql语句占位符
         self.db = mysql.connector.connect(**mysql_param)
-        self.createMySQLTable()
+        # self.createMySQLTable()
         
         #Sqlite数据库初始化 PS:使用sqlite时请使用？作为sql语句占位符
         # self.db = sqlite3.connect(SQLITE_PATH)

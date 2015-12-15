@@ -1,11 +1,32 @@
-.container {
-    padding-left: 0px;
-    padding-right: 0px;
+body{
+	background-color:#eeeeee;
+}
+header{
+	background-color:white;
+	height: 100px;
+}
+a.header-link:link{
+	color:#111111;
+}   
+a.header-link:active{
+	color:#111111;
+}   
+a.header-link:visited{
+	color:#111111;
+}   
+a.header-link:hover{
+	color:#111111;
+} 
+a.header-link{
+	font-family: Georgia, serif;;
+	TEXT-DECORATION:none;
+}
+.content{
+	min-height: 600px;
 }
 .footer {
 	padding-top:40px;
 	padding-bottom:40px;
-	margin-top:100px;
 	color:#767676;
 	text-align:center;
 	border-top:1px solid #e5e5e5;
