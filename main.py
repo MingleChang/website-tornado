@@ -26,23 +26,6 @@ class Application(tornado.web.Application):
         
         #Sqlite数据库初始化 PS:使用sqlite时请使用？作为sql语句占位符
         # self.db = sqlite3.connect(SQLITE_PATH)
-        # self.createSqliteTable()
-
-    def createSqliteTable(self):
-        cursor = self.db.cursor()
-        allSql=self.readSqlite()
-        for sql in allSql.split(';',1):
-            cursor.execute(sql)
-        cursor.close()
-        self.db.commit()
-
-    def readSqlite(self):
-        file_object = open(SQLITE_SQL_PATH)
-        try:
-            all_the_text = file_object.read()
-        finally:
-            file_object.close()
-        return all_the_text
 
     def createMySQLTable(self):
         cursor = self.db.cursor()

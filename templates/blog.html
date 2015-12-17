@@ -2,16 +2,29 @@
 {%block title%}  
 MingleChang
 {%end%} 
-{%block content%} 
-<div class="container"> 
-     <div class="list-group">
+{%block link%}  
+<link rel="stylesheet" href="{{static_url("CSS/blog.css")}}">
+{%end%}
+{%block content%}
+<div class="container" id="blog-content"> 
+<div class="row">
+	<div class="col-xs-2">
+		<img src="http://7xp3zz.com1.z0.glb.clouddn.com/mheader.png" width="100%" alt="..." class="img-circle">
+		<div>MingleChang</div>
+		<a href="https://github.com/MingleChang">@GitHub<a>
+	</div>
+	<div class="col-xs-10">
+     <ul class="list-unstyled">
      	{% for value in values %}
-         <a href="/blog/{{value[0]}}" class="list-group-item">
+     	<li>
+         <a href="/blog/{{value[0]}}">
           <h4 class="list-group-item-heading">{{value[1]}}</h4>
           <p class="list-group-item-text">{{value[2]}}</p>
         </a>
+    	</li>
          {% end %}
+      </ul>
       </div>
-    </div>
+</div>
 </div>
 {%end%} 
