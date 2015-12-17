@@ -21,10 +21,10 @@ SQLITE_PATH=BASH_PATH+'/test.db'
 
 #MySQL数据的连接参数
 mysql_param=dict(
-	host='128.199.173.244',
+	host='127.0.0.1',
 	port='3306',
-	user='website',
-	password='website890805',
+	user='root',
+	password='890805',
 	database='website'
 )
 
