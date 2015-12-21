@@ -48,7 +48,6 @@ class Application(tornado.web.Application):
         cursor.execute('select 1')
         values = cursor.fetchall()
         cursor.close()
-        print datetime()
   
 def main():
     tornado.options.parse_command_line()
