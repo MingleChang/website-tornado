@@ -42,11 +42,19 @@ class Application(tornado.web.Application):
         finally:
             file_object.close()
         return all_the_text
+
+    def checkMySQLConnect(self):
+        cursor = self.db.cursor()
+        cursor.execute('select 1')
+        values = cursor.fetchall()
+        cursor.close()
+        print datetime()
   
 def main():
     tornado.options.parse_command_line()
     http_server = tornado.httpserver.HTTPServer(Application())
     http_server.listen(options.port)
+    tornado.ioloop.PeriodicCallback(http_server.request_callback.checkMySQLConnect,1000*60*60).start()
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == '__main__':
